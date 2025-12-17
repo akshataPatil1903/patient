@@ -22,62 +22,78 @@ import com.demo.service.PatientService;
 
 @RestController
 public class PatientController {
-	
+
 	@Autowired
 	private PatientService ps;
-	
+
 	@PostMapping("add")
 	public void add(@RequestBody Patient p) {
 		ps.add(p);
 	}
 
 	@GetMapping("display")
-	public List<Patient>display(){
+	public List<Patient> display() {
 		return ps.display();
 	}
-	
+
 	@GetMapping("searchById = {id}")
 	public Patient serachById(@PathVariable Integer id) {
 		return ps.searchById(id);
 	}
-	
+
 	@PutMapping("update = {id}")
 	public Patient update(@PathVariable Integer id, @RequestBody Patient p) {
 		return ps.update(id, p);
 	}
-	
+
 	@DeleteMapping("delete = {id}")
 	public void delete(@PathVariable Integer id) {
 		ps.delete(id);
 	}
-	
+
 	@GetMapping("searchByName = {name}")
 	public Patient searchByName(@PathVariable String name) {
 		return ps.searchByName(name);
 	}
-	
+
 	@GetMapping("findByAge = {age}")
 	public Patient findByAge(@PathVariable Integer age) {
 		return ps.findByAge(age);
 	}
-	
-	
+
 	@GetMapping("findByDate = {date}")
 	public Patient findByDate(@PathVariable String date) {
 		return ps.findByDate(date);
 	}
-	
+
 	@PostMapping("search = {id}")
-	public ResponseEntity<?> search(@PathVariable Integer id){
+	public ResponseEntity<?> search(@PathVariable Integer id) {
 		Patient result = ps.search(id);
 		return new ResponseEntity<Patient>(result, HttpStatus.OK);
 	}
-	
+
 	@GetMapping("searchByGender = {gender}")
 	public List searchByGender(@PathVariable String gender) {
 		return ps.searchByGender(gender);
 	}
+
+	@GetMapping("sortByName")
+	public List<Patient> sortByName() {
+		return ps.sortByName();
+	}
+
+	@GetMapping("sortByAge")
+	public List<Patient> sortByAge() {
+		return ps.sortByAge();
+	}
+
+	@GetMapping("sortByEmail")
+	public List<Patient> sortByEmail() {
+		return ps.sortByEmail();
+	}
 	
-	
-	
+	@GetMapping("sortByDate")
+	public List<Patient> sortByDate(){
+		return ps.sortByDate();
+	}
 }

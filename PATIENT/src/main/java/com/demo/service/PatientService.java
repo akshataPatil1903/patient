@@ -30,6 +30,16 @@ public interface PatientService {
 
 	List searchByGender(String gender);
 
+	List<Patient> sortByName();
+
+	List<Patient> sortByAge();
+
+	List<Patient> sortByEmail();
+
+	List<Patient> sortByDate();
+
+	
+
 	
 
 	
